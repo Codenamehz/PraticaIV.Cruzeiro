@@ -1,0 +1,699 @@
+/* =========================================================
+   PROJETO SORRIR BEM - Design System + Layout Responsivo
+   Autor: Matheus | Disciplina: Desenvolvimento Web
+   ========================================================= */
+
+/* ------------------ */
+/* 1. VARIÁVEIS CSS  */
+/* ------------------ */
+:root {
+  /* Paleta de cores (8 cores) */
+  --color-primary: #005f5f;
+  --color-secondary: #008080;
+  --color-accent: #90e0ef;
+  --color-success: #2ecc71;
+  --color-warning: #f1c40f;
+  --color-danger: #e63946;
+  --color-neutral-light: #f8f9fa;
+  --color-neutral-dark: #212529;
+
+  /* Tipografia (5 tamanhos hierárquicos) */
+  --font-xs: 0.875rem;
+  --font-sm: 1rem;
+  --font-md: 1.25rem;
+  --font-lg: 1.75rem;
+  --font-xl: 2.5rem;
+
+  /* Espaçamento modular */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+
+  /* Largura máxima do container */
+  --container-width: 1200px;
+}
+
+/* ------------------ */
+/* 2. ESTILOS GLOBAIS */
+/* ------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--color-neutral-dark);
+  background-color: var(--color-neutral-light);
+  line-height: 1.6;
+}
+
+/* Container padrão */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+}
+
+/* ------------------ */
+/* 3. CABEÇALHO E MENU */
+/* ------------------ */
+header {
+  background: var(--color-primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.3s ease;
+}
+
+header.scrolled {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header {
+  background: var(--color-primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.25s ease, box-shadow 0.3s ease, backdrop-filter 0.25s ease;
+  /* deixa o header com backdrop para melhorar legibilidade quando transparente */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+header.scrolled {
+  /* torna o header semi-transparente ao rolar */
+  background: rgba(0,95,95,0.75); /* ajuste o alpha (0.0 - 1.0) conforme desejar */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.brand h1 {
+  font-size: var(--font-lg);
+}
+
+.muted {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-xs);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  
+}
+
+nav a:hover {
+  color: var(--color-accent);
+}
+
+nav a{
+  display: inline-block;
+  background: #ffffff;
+  color: var(--color-primary);
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s;
+}
+
+nav a:hover,
+nav a:focus{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  background: linear-gradient(180deg, #ffffff, #f3fbfb);
+  color: var(--color-primary);
+  outline: none;
+}
+
+nav a:active{
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08) inset;
+}
+
+nav a:focus-visible{
+  outline: 3px solid rgba(144,224,239,0.28);
+  outline-offset: 2px;
+}
+
+/* Layout do header */
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+}
+
+
+/* ------------------ */
+/* 4. MENU RESPONSIVO */
+/* ------------------ */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    background: var(--color-primary);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* ------------------ */
+/* 5. HERO / BANNER */
+/* ------------------ */
+.hero {
+  text-align: center;
+  padding: var(--space-5) var(--space-2);
+  background: linear-gradient(to right, var(--color-secondary), var(--color-accent));
+  color: white;
+  border-radius: 0 0 var(--space-2) var(--space-2);
+}
+
+.hero h2 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--space-2);
+}
+
+.hero p {
+  font-size: var(--font-md);
+  max-width: 700px;
+  margin: 0 auto var(--space-3);
+}
+
+.hero img {
+  max-width: 350px;
+  width: 100%;
+  border-radius: var(--space-1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------ */
+/* 6. SEÇÃO SOBRE */
+/* ------------------ */
+.about {
+  background: white;
+  padding: var(--space-4);
+  border-radius: var(--space-1);
+  margin: var(--space-4) 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#sobre {
+  color: var(--color-primary); /* troque por qualquer hex, ex: #005f5f ou #2b8a3e */
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* ------------------ */
+/* 7. GRID DE AÇÕES */
+/* ------------------ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.grid .card {
+  grid-column: span 4;
+  background: white;
+  border-radius: var(--space-1);
+  padding: var(--space-3);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.highlights {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.highlights h3,
+.highlights #servicos {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.highlights .grid {
+  gap: 12px; /* reduz espaço entre cards */
+}
+
+.highlights .card {
+  margin: 0;
+  padding: 16px;
+}
+
+/* garante que o título ocupe toda a largura da grid */
+.highlights > h3 {
+  grid-column: 1 / -1;
+  margin-bottom: 12px;
+}
+
+/* mantém os cards ocupando 3 colunas cada (3 cards lado a lado no grid 12-colunas) */
+.highlights .card {
+  grid-column: span 4;
+}
+
+/* ajuste responsivo: empilha os cards em telas pequenas */
+@media (max-width: 768px) {
+  .highlights .card {
+    grid-column: span 12;
+  }
+}
+
+
+.grid .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsividade do grid (5 breakpoints) */
+@media (max-width: 1200px) {
+  .grid .card { grid-column: span 6; }
+}
+@media (max-width: 992px) {
+  .grid .card { grid-column: span 6; }
+}
+@media (max-width: 768px) {
+  .grid .card { grid-column: span 12; }
+}
+@media (max-width: 576px) {
+  .hero h2 { font-size: var(--font-lg); }
+}
+@media (max-width: 400px) {
+  .hero p { font-size: var(--font-sm); }
+}
+
+/* ------------------ */
+/* 8. COMPONENTES */
+/* ------------------ */
+
+/* Botões */
+button, .btn {
+  background: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: var(--color-primary);
+}
+
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* Formulários */
+input, textarea {
+  width: 100%;
+  padding: var(--space-2);
+  border: 1px solid #ccc;
+  border-radius: var(--space-1);
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-2);
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid var(--color-accent);
+}
+
+
+/* Alerts */
+.alert {
+  padding: var(--space-2);
+  border-radius: var(--space-1);
+  margin: var(--space-2) 0;
+  font-weight: bold;
+}
+
+.alert.success { background: var(--color-success); color: white; }
+.alert.warning { background: var(--color-warning); color: #222; }
+.alert.error { background: var(--color-danger); color: white; }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: var(--font-xs);
+}
+
+/* ------------------ */
+/* 9. RODAPÉ */
+/* ------------------ */
+footer {
+  background: var(--color-primary);
+  color: white;
+  text-align: center;
+  padding: var(--space-3);
+  margin-top: var(--space-4);
+  font-size: var(--font-xs);
+}
+
+
+/* estilos específicos para o bloco de contato */
+.about address {
+  margin-top: 12px;
+  font-style: normal;
+  color: #333;
+  line-height: 1.4;
+}
+
+.about address strong {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+}
+
+.about address a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.about address a:hover {
+  text-decoration: underline;
+  color: var(--color-secondary);
+}
+
+/* opcional: versão compacta do contato para o rodapé */
+footer .muted {
+  font-size: var(--font-xs);
+  opacity: 0.9;
+}
+
+/* =========================================================
+   PÁGINA: PROJETOS
+   ========================================================= */
+
+/* Seções principais */
+main header {
+  background: var(--color-neutral-light);
+  padding: var(--space-4);
+  border-left: 6px solid var(--color-primary);
+  border-radius: var(--space-1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: var(--space-4);
+}
+
+
+main header { /* HEADER QUE ESTA FIXO E NÃO SAI */
+  top: 115px; /* ajuste para ficar abaixo do header principal (ex.: 64-90px) */
+  z-index: 90;
+  background: rgba(255,255,255,0.96); /* mantém legibilidade sobre o conteúdo */
+  padding: var(--space-3);
+  border-radius: var(--space-1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  
+}
+
+main header .muted {
+  color: #000;       /* preto */
+  font-weight: 600;  /* opcional, deixa em negrito */
+  margin-top: 10px;
+  font-size: var(--font-ms);
+}
+
+main header h3 {
+  font-size: var(--font-lg);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+
+}
+
+main header p {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-sm);
+  color: var(--color-neutral-dark);
+}
+
+/* Seções subsequentes */
+main section {
+  background: white;
+  border-left: 6px solid var(--color-primary);
+  padding: var(--space-4);
+  border-radius: var(--space-1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: var(--space-4);
+}
+
+main section h2,
+main section h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+main section p {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-sm);
+}
+
+/* Imagens dentro das seções */
+main section img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--space-1);
+  display: block;
+  margin: var(--space-3) auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Listas */
+main ul {
+  list-style: disc inside;
+  padding-left: var(--space-3);
+  font-size: var(--font-sm);
+}
+
+main ul li {
+  margin-bottom: var(--space-1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main header, main section {
+    padding: var(--space-3);
+  }
+
+  main section img {
+    max-width: 100%;
+  }
+}
+
+header {
+  background: var(--color-primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.25s ease, box-shadow 0.3s ease, backdrop-filter 0.25s ease, color 0.25s;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* quando a página for rolada, o header fica semi-transparente */
+header.scrolled{
+  background: rgba(0,95,95,0.45); /* transparente — ajuste o último valor (0.0 - 1.0) */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* =========================================================
+   PÁGINA: CADASTRO
+   ========================================================= */
+
+/* Container principal */
+main form {
+  background: white;
+  padding: var(--space-4);
+  border-radius: var(--space-1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+/* Título e descrição */
+main h2 {
+  color: var(--color-primary);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-1);
+  font-size: var(--font-lg);
+}
+
+main p.muted {
+  margin-bottom: var(--space-3);
+}
+
+/* Fieldsets e legendas */
+form fieldset {
+  border: 2px solid var(--color-accent);
+  border-radius: var(--space-1);
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+form legend {
+  color: var(--color-primary);
+  font-weight: bold;
+  padding: 0 var(--space-2);
+  font-size: var(--font-md);
+}
+
+/* Labels e campos */
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-neutral-dark);
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: var(--space-2);
+  border: 1px solid #ccc;
+  border-radius: var(--space-1);
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estados visuais */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.25);
+}
+
+form input:invalid {
+  border-color: var(--color-danger);
+}
+
+form input:valid {
+  border-color: var(--color-success);
+}
+
+/* Grupo de botões */
+.form-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}
+
+/* Botões */
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-secondary);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-ghost:hover {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+/* Mensagens de validação visual */
+input:invalid:focus,
+textarea:invalid:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.25);
+}
+
+/* Layout responsivo */
+@media (max-width: 768px) {
+  form fieldset {
+    padding: var(--space-2);
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+

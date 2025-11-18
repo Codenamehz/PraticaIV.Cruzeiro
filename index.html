@@ -1,0 +1,118 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projeto Sorrir Bem</title>
+  <link rel="icon" href="images/higiene-bucal.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+  <meta name="description" content="Sorriso Gratuito: tratamentos odontológicos gratuitos para quem precisa. Voluntariado e doações.">
+  
+
+</head>
+
+<body>
+
+ 
+  <header >
+    <div class="container">
+      <div class="brand">
+        
+        <div>
+          <h1 id="projeto1">Projeto Sorrir Bem</h1>
+          <p class="muted">Tratamentos odontológicos gratuitos e humanizados para Todos!</p>
+        </div>
+
+      </div>
+
+      <nav aria-label="Menu principal">
+        <ul class="nav">
+
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <h2 id="hero-title"> Sorrisos que transformam vidas </h2>
+      <p id="frase">Fornecemos consultas, tratamentos de restauração, extração e acompanhamento para comunidades em situação de vulnerabilidade e extrema Pobreza.</p>
+     
+      <figure>
+        <img id="img" src="images/atendimento-odontologico.png" alt="Atendimento odontológico em ação">
+      </figure> 
+    </section>
+
+    <section class="about card" aria-labelledby="sobre">
+
+      <h3 id="sobre">Sobre a ONG</h3>
+      <p>Nossa missão é garantir acesso a tratamentos odontológicos básicos e especializados para pessoas que não têm condições financeiras.
+        Com o apoio de profissionais voluntários, parceiros e comunidades locais, oferecemos tratamentos odontológicos gratuitos, além de ações de prevenção, orientação e conscientização sobre a importância da higiene bucal.
+        Nosso trabalho vai além do consultório: queremos construir sorrisos verdadeiros, cheios de confiança e esperança. Cada atendimento representa um passo rumo a um futuro mais justo, saudável e humano.
+      </p>
+      <address>
+
+        <strong>Contato:</strong><br>
+        Rua das Flores, 123 — Centro, São Paulo — SP<br>
+        Telefone: <a href="tel:+5511999999999">(11) 99999-9999</a><br>
+        E-mail: <a href="mailto:contato@sorrisogratuito.org">contato@sorrisogratuito.org</a>
+      </address>
+
+    </section>
+
+    <section class="highlights grid" aria-labelledby="servicos">
+      <h3 id="servicos">Nossas Ações:</h3>
+
+      <article class="card">
+        <h4>Atendimento Básico</h4>
+        <p>Limpeza, restaurações e extrações com acompanhamento.</p>
+      </article>
+
+      <article class="card">
+        <h4>Campanhas de Saúde</h4>
+        <p>Mutirões em escolas e comunidades.</p>
+
+       
+      </article>
+
+      <article class="card">
+        <h4>Voluntariado</h4>
+        <p>Profissionais e estudantes são bem-vindos — saiba como participar em Projetos.</p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer >
+
+    <div class="container">
+      <p class="muted">© Projeto Sorrir Bem Todos os direitos reservados. </p>
+    </div>
+
+  </footer>
+  <script>
+    (function () {
+      const header = document.querySelector('header');
+      const threshold = 8; // px de scroll para ativar (ajuste se necessário)
+      const onScroll = () => {
+        if (window.scrollY > threshold) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+   </script>
+ 
+
+  
+</body>
+
+</html>
